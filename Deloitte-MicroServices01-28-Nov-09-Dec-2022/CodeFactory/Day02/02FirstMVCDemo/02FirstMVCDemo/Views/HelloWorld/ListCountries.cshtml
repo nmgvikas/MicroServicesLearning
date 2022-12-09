@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+model List<Country>;
+
+    @{
+        var Today = (DateTime)ViewData["Today"];
+        <h1>
+            Today is @Today.ToShortDateString()</h1>
+        var now = ViewBag.Now;
+        <h1>
+            Current Time  @now.ToLongTimeString()
+        </h1>
+
+    }
+    @{
+        foreach(var country in Model)
+        {
+            <h1>@country.FullName &nbsp;&nbsp;&nbsp; @country.ShortName  &nbsp;&nbsp;&nbsp; @country.Currency</h1>
+        }
+    }

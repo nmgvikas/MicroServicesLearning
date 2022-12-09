@@ -1,0 +1,37 @@
+﻿@using MyCustomers.Management.App.Models
+@inject MyCustomers.Management.App.Services.ICustomerDataService custSvc;
+
+@using Microsoft.AspNetCore.SignalR.Client;
+
+
+<div>
+    @notifications;
+</div>
+<CustomersListComponent ListOfCustomers=@lstCustomers/>
+
+
+
+@code {
+    private List<Customer> lstCustomers = new List<Customer>();
+    private HubConnection connection;
+    private string notifications = string.Empty;
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        var custs = await custSvc.GetCustomersAsync();
+        this.lstCustomers = custs.ToList();
+        //notify state change
+        StateHasChanged();
+        connection = new HubConnectionBuilder().WithUrl("http://win10dockersrini2022.eastus.cloudapp.azure.com:7071/customerHub").Build();
+        connection.On<string>("NewCustomerNotification", (message) =>
+        {
+            notifications += message;
+            StateHasChanged();
+
+        });
+        await connection.StartAsync();
+
+
+
+    }
+}

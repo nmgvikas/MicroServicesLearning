@@ -1,0 +1,27 @@
+<h1> {{title}}</h1>
+<h2> {{lstCustomers.length}}</h2>
+
+<!--Place holder for New Customer Notifications with SignalR-->
+
+   {{notificationData}}
+
+
+    <h3>Search By Name: </h3> <input type="text" (input)="searchCustomers($event)"/>
+
+<table width="100%">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Customer Since</th>
+        <th>Total Purchases</th>
+    </tr>
+    <tr *ngFor="let cust of lstCustomers">
+        <td>{{cust.id}}</td>
+        <td  align="left">&nbsp;&nbsp;{{cust.name}}</td>
+        <td align="center">{{cust.location}}</td>
+        <td align="center">{{cust.customerSince | date:"dd-mm-yyyy"}}</td>
+        <td align="right">{{cust.totalPurchases | currency:"INR"}}</td>
+    </tr>
+
+</table>

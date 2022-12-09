@@ -1,0 +1,1256 @@
+Welcome!
+
+Deloitte - DotNET Microservices
+
+Timings
+
+28-Nov-2022 to 01-Dec-2022 - 9:00AM - 1:30PM  (Tea Break -11:30AM to 12:00PM)
+05-Dec-2022 to 09-Dec-2022 - 9:00AM - 1:00PM  (Tea Break -11:30AM to 12:00PM)
+
+High-level Agenda 
+
+1. .NET Framework -> .NET Core -> .NET Platform
+2. ASP.NET Core - Evolution
+3. Project configuration
+4. MVC Apps
+5. Embed Non-functional requirements
+6. Data Driven with Entity Framework
+7. Serivce Oriented Architecture
+8. REST APIs
+9. Front end app development
+10. Duplex Comms Style
+11. Async Messaging - Rabbit MQ, Azure Service Bus
+12. Containerization with Docker
+13. Quick look into Kubernetes
+14. Azure Platform
+15. Deploying Apps and Services to Azure
+
+
+All Hands-on, on Palmeto Remote Machine
+
+**************************Some Questions*********************
+
+1. Requirements Enginnering/ Development
+User/Customer/market Expectations <-> Understanding
+IEC, IEE, Waterfall, Spiral, Agile - 
+Req Elicitation, Req Analysis, Req Prioritization, Req Formalization
+Attributes of Requirements 
+Clarity, Simplicity, Unambiguity, Traceability, Verifiability, Testability
+Use Case diagrams
+
+Outcome - Software REquirements Specification - 
+
+Functional REquirements, Non-Functional Requirements, NON Requirements (
+Q) List some Non-functional requirements that you have come accross and how you have allocated and implemented it
+
+Ans: Security, Serviceability, Extensibility, 
+
+Performance - Compute (RAM, Memory, Processor, Cache), I/Ops, Database Connections, Network
+
+REST API (1 Method) - 1 Worker Thread - App Pool - 1 sec to service a request
+
+100 concurrent request -> How long does it take?
+
+ Response Time/Speed - Task Parallelism - 100 Threads 1MB/Thread, (Throttling) 
+
+, Speed & Througput
+
+Non - functional requirements - Quality attributes
+Availability, Reliability, Graceful Degradation?, Modularity, Manageability, Security (Authentication, Authorization, CORS, XSRF, Comms, Data at REST, RBAC)
+
+Chief Engineer - Techical Success of the Project - Fault Tolerance, Safety
+Life Boats - 4000, 98 - 400
+
+Program manager - Cost, Market(Sales), Profit
+
+UX, UI, 
+
+
+
+2. Separation of Concerns, SOC?
+Q. What is a Concern in S/W Eng? At what stage of the SDLC is it identified?
+Separation of Responsibilities
+Responsibility/ Concern - Logical group of related Requirements
+UI, UX, Data access, Data Storage, Authentication, Authorization, Diagnostics, Reliability, Distributed Data Storage
+
+Requirements
+
+Architectural - Decomposition of SubSystems, Interfaces, Allocation of Requirements
+
+State Charts, Component Diagrams, Inteaction Diagrams
+
+Design
+OOAD, Design Patterns...
+Coding
+
+Concerns -> Software Modules - Independently - Loosely coupled
+
+
+3. SOLID Principles of OOAD 
+Q. What does D Stand for? What does it help achieve?
+Dependency Inversion (Inversion of Contrl & Dependency Injection)
+web.config 
+@page outputcache duration headers
+<cache enabled=true mode=""
+
+Modularity, Loose-coupling
+
+4. OOD - Creational, Behavioral, Structural
+Q. What is the philosophy of Creational Patterns? List some wrt.dotnet.
+Control Object Creation - Do not allow the client to construnct objects
+1. Singleton
+2. Abstract Factory
+3. Prototype - 
+4. Builder 
+5. Proxy
+
+
+
+5. Some Differences between OLTP and OLAP Database systems?
+OLTP - Online Transactional Processing - ACID, ER Modeling, Normalized, Relational, Insert, Update and Delete priority, SQL 92 Queries (TSQL, Oracle SQL)
+OLAP - Online Analytical Processing - Aggregations, Dimensional Desgin, Star Schema, 
+Read Only , Some Latency, (MDX, DMX), XML for Analysis
+
+
+6. RDMS vs NoSQL. List out some differences
+RDBMS : There is a fixed schema and Data can store in a structured format
+Thre is a relation between data
+Joins can be used to retive data from multiple tabled
+ACID Compliant - Distributed Transactions - Insert SQL server - Insert Oracle Server
+Records - Binary format - RowGUID
+TransactionScope (nested transactions)
+OLETransaction 
+COM+ - MSDTC
+
+Verical Scaling - Add more HDD, More RAM
+Horizontal Scaling - Built on top of the existing layter
+
+Primary Indexing
+
+
+NoSQL : There is no fixed schema and structure
+ther is no joins concept
+We can use it for real time data injestion
+Transactions have evolved - Distributed Transactions????
+Modern Databases - Horizontal Scaling by default
+High Availability - Replicasets
+Lacks in SQL Query (Join) Surface
+JSON -> BSON (additional datatypes) - ObjectId
+DocumentId
+Only Secondary Indexes - ObjectID is the primary index
+
+7. What are the popular modern data exchange formats in Distributed Computing model?
+XML, JSON, SOAP, CSV, AVRO (JSON with Schema, Binary seriazlied), Parquet - CSV with STrong typing
+
+8. What would be your rationale for choosing Async Messaging over Sync Communications?
+Client -> Server1, Server2, (Auto Scaling)
+Sync Comms Style
+2 way comms
+1 way Comms
+2 - 1 way comms - duplex
+
+Async Messaging
+Producer/Sender  ->>>> Queue/Topic (Service/Bus) ->>>>> Consumer
+Load Balancing
+Competing Consumers
+CQRS - Command, Query Segregation
+
+
+9. Browser Client -> REST API (HTTP/HTTPS) - Pull Architecture
+How would you replace this with a Push Architecture
+
+Browser Client  <--- Push ---- Server
+Web Sockets - signalR  - Duplex comms for Browser - ws://
+net.tcp -Duplex
+WSDualHttpBinding
+
+10. List out some advantages of moving to the cloud.
+AVailability,Redundancy Scalability, 
+Iaas, PaaS, SaaS
+inbuilt Log Analytics (App+Logging as sidecar)
+Move from CapEx to OpEx
+Centralized RBAC
+Granular Security
+Range of Services
+Choice of Data Centres
+
+
+Will be back by 10:30 AM
+
+Tooling Stack
+1. Visual Studio
+2. WSL 
+3. Docker 
+
+
+
+************************** A brief History and Evolution of .NET*************
+
+
+1. MS DOS  DOS Xerox
+2. Windows 95 (whereas Mac 1984) - x86, x64 - Win 98 R2
+3. OS Company, Office productivity tools - Word Perfect
+4. MS Office - Lotus Suite 
+5. MS Access - JET (JET OLEDB Driver)
+6. Ashton Tate Database (Sybase & SQL Server)
+7. SQL Server - 6. 0 -1996,  6.5 1998, 7.0 1999, 2000, 2003, 2005, 2008, 2008R2
+8. 2 Tier - Client Server - Only Windows
+Visual Studio 
+VC++
+Foxpro
+VJ++
+VB (bas)
+1994 - Java - Open Source - Sun Microsystems
+
+Java Specification + Java Language
+
+1996 - Source Code in Java - Compiler -> Byte Code -> Virtual Execution System (JVM)
+JRE, J2EE, J2ME, J2SE, EJB, JNDI, JMS,
+
+PascalCase, camelCase, kebab-case ng-repeat
+
+Microsoft - JVM - VJ++ apps (MFC & ATL) - Windows
+
+Component Objet Model - Framework Multi Language Support
+OLE, COm, ActiveX
+
+VC++ Class - COM Component
+Component = Class + Masala (Topping) _ Iunknown (AddRef, QueryInterface, Release)
+Line 21 - c'tor called
+Line 300 - 1st method on the object instance
+
+JIT Activated Object
+
+COM
+
+Code name ASP+
+
+Platform for Distributed Computing 
+XMl, Web Services, NT 4.0, Active Directory, SQL Server, Site Server Commercer, SharePoint 2000 (COM)
+
+Common Language Infrastructure
+CLS, CTS & PE Format
+
+How do you compile? 
+What is the output of compilation?
+How would you execute the code?
+Where would the dependencies be available?
+
+
+Source Code (C#,VB.NET, Object Pascal, JScript, Fujitsu COBOL.NET, Mercury, Java) 
+
+Language Compiler  -> IL Code + Manifest + Embedded Resources
+  Assembly (Private, Shared -GAC)
+
+
+Your own Runtime 
+1. Type Checker
+2. Security Engine (Code Access Security)
+3. COM Marshaller
+4. Exception Engine
+5. Full Threading Support (Thread Engine)
+6. Non deterministic finalization (Garbage Colletor)
+7. Class Loader
+8. Layout Manager
+9. Debugger
+10. IL to Native Code Compiter (JIT Compilers)
+
+
+.NET Framework - Implementation of CLI from Microsoft- To run Apps
+.NET Framework SDK - Tools to Develop, Build & Test Apps
+
+.NET Framework - Runtime/Virtual Execution System
+Base Class Libs+ CLR
+.NET Framework SDK = .NET Framework + Dev,Test Tools
+
+.NET Framework 1.0 - CLR 1.0
+.NET Framework 1.1 - CLR 1.1
+.NET Framework 2.0 - CLR 2.0
+.NET Framework 3.0 - CLR 2.0
+.NET Framework 3.5 - CLR 2.0
+.NET Framework 4.0 - CLR 4.0
+Dynamic Language Runtime - 
+Task Parallel Library - TaskFactory.New
+Paralled Linq - from j in myEmployees.AsParallel() - Share the processing accross cores in your processor
+.NET Framework 4.5 - CLR 4.0
+async & await
+Replace Multi Threaing Mode to Single Threaded Event loop 
+V8 Engine - Kestrel Web Server
+
+
+
+mono project 
+Mono Runtime for Linux, Mac, 
+
+
+.NET Core 1.0 Preview
+.NET Core 1.1
+.NET Core 2.0
+.NET Core 2.1
+.NET Core 3.0
+.NET Core 3.1
+
+.NET 5 - BCL (---)+ CLR   Windows, Linux, Mac, Docker
+.NET 6
+.NET 7
+
+Visual STudio - Only on Windows - Almost Free
+Visual Studio Code - Windows, Linux, MAC - Free but not open source
+Py, C#, PS, pySpark, Go, Java, Angular, React
+Host your web apps - Linux, IIS, Nginx, Apache..
+
+SQL SErver 2017 for Linux
+
+Download .NET SDK 5.0 x64 platform
+
+https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-5.0.408-windows-x64-installer
+
+
+******************************Day 02***************************************
+
+Agenda
+1. MVC with ASP.NET Core - Why MVC? Some Changes
+2. Data driven application
+3. Dependency Injection. Why DI? 
+4. Data Driven ASP.NET Core MVC  with Entity Framework & (localdb)\MSSQL Local DB
+5. REST API
+
+
+******** Quick History of Web Applications**************
+
+3-tier Client-Server Web Architecture - Protocols (HTTP,SMTP, FTP) - HTML, 
+Mocha, LiveScript, JavaScript, ECMAScript, JScript
+
+
+Web Browser                       Web Server(HTTP SErver)                      Database
+Browser Engine                       Static files
+Parsers, HTML, XML,JSON           .asp,.jsp,.aspx,.php,.cgi
+Javascript/VBScript                  ISAPI (inprocess), CGI, NSAPI
+asp.dll, 
+Multiple GET
+  --styles
+  ---scripts
+   ---images
+-------OS------
+Compute,Storage,Network
+
+
+ASP <% %> - @
+Classic ASP.NET - VB Forms - .frm .vb - VB OOLang - Component - Design Time Controls
+HTML, Stylesheets, JavaScript DHTML, 
+Visual Interdev
+
+FORM .aspx  - Layout - Markup - System.Web.UI.WebControls, System.Web.Ui.HtmControls
+<%@Page .........%>
+<asp:textbox runat=server/>
+<input type=text runat=server
+
+CodeDOmProvider
+
+Code-behind .aspx.cs / .aspx.vb
+
+HTML Output     -     Server (HTML) 
+ItemTemplate - RowColor - 
+AlternatingITemTemplate - 
+
+
+
+Page 1000 Records - Update only 1 row  -> Server Reqest
+Ajax  -  Ajax Control Toolkit - UpdatePanel - Script Manager
+
+Developer  - Separation of Concerns
+DataBinding - Server Side 
+dg1.DataSource = myDataSet.Tables[0].DefaultView
+dg1.DataBind()
+
+Event-driven execution of pages - No Methods
+void override Button1_Click(Object S, EventArgs e){
+dg1.DataSource = myDataSet.Tables[0].DefaultView
+dg1.DataBind()
+}
+
+__viestate 
+
+
+Browser heavy -> HTML 5 -> JavaScript - JQuery, AngularJS, ExtJS, KnockOut
+
+SPA Model - JS Frameworks
+
+Separation of Concerns
+MVP, MVVM, MVC
+
+MVP 
+Control(View)   ->EventAggregator(Presenter)   Model (Data)
+
+Invalidate Control - Call Paint() - New View with Data
+
+
+MVVM - PRISM, Unity, MEF, AutoFac, NInject
+
+View (Show, Capture)                     ServiceLayer (ViewModel)                Model
+Mapping to Property                     AddNewEmployee(ICommand obj)
+
+<Button Command="AddNewEmployee"
+
+MVC - Web Applications
+
+View                               Controller(Routing)                           Model
+                    Action 
+
+
+Angular 
+MVP, MVC, MVVM
+
+MVP - Data Binding
+
+MVVM - UI  -> Controller - Class <button [(clcik)]="calculateTotals()"/>
+
+MV*
+
+Quick Gun Murugan
+
+
+*******EntityFramework*****************
+
+Provider Model of ADO.NET
+
+System.Data.Common
+DbConnection - SqlConnection
+
+DbCommand - SqlCommand
+
+DbDataReader
+
+Conceptual Schema Definition Language 
+Mapping Schema Language
+Store Schema Definition Language
+
+App (CSDL)    MSL (Linq provider) - CSL (LINQ Queries - Native SQL (API)
+
+ParallelLinq for large in memory processing
+
+Entity framework core
+Model First (Code first)
+Legacy Approach (Database first approach)
+
+
+#Add the packages to the project
+
+Install-Package Microsoft.EntityFrameworkCore.Design
+Install-Package Microsoft.EntityFrameworkCore.SqlServer
+
+*******************Day 03*****************
+
+1. Cross-cuts - Action Filters
+2. REST API with MongoDB  
+3. ODM - Mogodb.driver - Repository Pattern
+4. CRUD
+
+
+Web application
+Concerns - Subsystem - Module
+UI, UX, Comms, SErvice, Authentication, Compression, VirusScan, Custom Transport Encryption, Diagnostic.
+Cut accross - Developed Independently loosely integrated into system
+Plug and Played - DI
+
+Action Filter 
+
+
+Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=LogAnalyticsDB;Trusted_Connection=True;MultipleActiveResultSets=true;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=master;Trusted_Connection=True;MultipleActiveResultSets=true;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+
+Shared Folder
+\\192.168.10.51\soft
+
+
+#Open the mongo shell in cmd prompt
+
+**************MongoDB Commands*************
+
+
+
+use customerDb;
+
+db.createCollection("customers")
+
+var myCustomers = [{"id":201,"name":"Doug Walters","customerSince":new Date(2008,7,12),"totalPurchases":7777.82,"location":"Atlanta"},{"id":202,"name":"IK Murugan","customerSince":new Date(2018,12,21),"totalPurchases":8777.82,"location":"Chennai"},{"id":203,"name":"JB Reddy","customerSince":new Date(2022,7,12),"totalPurchases":7777.82,"location":"Hyderabad"},{"id":204,"name":"Ved Khare","customerSince":new Date(2015,7,12),"totalPurchases":7677.82,"location":"Mumbai"},{"id":205,"name":"Krishnaswamy","customerSince":new Date(2003,3,12),"totalPurchases":9777.82,"location":"Bengaluru"}];
+
+db.customers.insertMany(myCustomers);
+
+db.customers.find({});
+
+
+db.customers.find({}).pretty();
+
+RabbitMQ (async Messaging)
+
+SPA (Angular)    -- RESTAPI (SignalR Hub)    -- MongoDB
+<<----Push
+Blazor
+
+Install-Package MongoDb.Driver
+
+
+1. Install NodeJS
+2. cmd
+>npm install -g typescript
+>tsc --version
+>npm install -g @angular/cli
+>ng version
+
+ng new ng-app 
+(N)
+CSS <Enter>
+
+cd ng-app
+>ng serve
+
+
+
+
+On the Palmeto VM - 
+Edge Browser - https://outlook.com
+Create a New Outlook id and login
+
+Azure sponsorship pass - Redeem
+
+
+**************Day 04 ****************
+
+microsoftazurepass.com
+
+
+BS Sathya Prasad                QH5Y6R2P3XJ3DEH12M
+Vishal Kandavalli                QS1V6O25EBTI7ZHNYM
+Nagarjuna Chithirala                QTFELSFUOX1F6ZNJ82
+Deepak Kotagiri                        QN71F78G1F7GNQS1CE
+Raj Chili                        QDPDH3TRWI3XL2IGUG
+Siva Kumar Bharadwaj                QFNOJ9IPQ48X6OWU1V
+ZP Prasad Zanjad                QJFYVN7KWD4JFGMNV9
+P N SaiLakshmi                        QIFL2HMC1CZ9CI49V7
+RK Kummetha Bharath Kumar reddy        Q3FESG7LGJSZQGMBC9
+KP Venkata Krishnareddy                Q8E2LCKFKL5V16SLRT
+Jyotirmoy Maschatak                Q9ONVXF6YQJY8YLHHV
+Apurva Karne                        QWOR8Q4T7PM1Q9732Q
+Samyuktha Jakkam                QQGE73K8VEB19T4HDY
+Riyas T P                        Q2JF30F9JJQ4X1DV2C
+Harshit Soni                        QI6VQCUYWF65TV0NEL
+Suhas Malve                        Q8P135OI3JDLN9VI57
+SivaNaga Lakshmi Srihari        Q2QYLO0XKM5KLZBPK8
+Vibhuti Kashyap                        Q3K40NJ3WZ9ZBUSU3B
+Vikas Nimmagadda                QHJCGXVPCVYS74I9WG
+Harshal                                QDTW2BU00G22F2SDMW
+Vinod                                 QD8JLXR0JOGMNSCXCE
+Siddhartha Shaw                        Q1W14MW0MU8K786SG9
+Usha Kiran                        QDWB0T87SDNMNDXYMH
+
+
+*****************customers.data.service.ts************
+import { Injectable } from "@angular/core";
+import {HttpClient} from "@angular/common/http";
+import {Observable,throwError} from "rxjs";
+import {map,catchError} from 'rxjs/operators';
+import { ICustomer } from "./app-customers/ICustomer";
+
+@Injectable()
+export class CustomerDataService {
+    customerApiUrl = "https://localhost:7134/api/customers";
+    httpSocket : HttpClient;
+    constructor(httpSocket:HttpClient){
+        this.httpSocket = httpSocket;
+    }
+
+    getAllCustomers(): Observable<ICustomer[]> {
+        return this.httpSocket.get<ICustomer[]>(this.customerApiUrl)
+        .pipe(
+            catchError(this.handleError)
+        )
+    }
+    handleError(error:any){
+        return throwError( () => new Error("Error from API"));
+    }
+}
+
+**customers.component.ts
+
+import { Component, OnInit } from "@angular/core"; 
+import { CustomerDataService } from "./customers.data.service";
+import { ICustomer } from "./ICustomer";
+import * as signalR from "@aspnet/signalr";
+@Component({
+    selector: "app-customers",
+    templateUrl:"./customers.component.html"
+})
+class CustomersComponent implements OnInit{
+   
+    lstCustomers : ICustomer[] = [];
+    _dataService : CustomerDataService;
+    notificationData : any;
+    //c'tor
+    constructor (dataService : CustomerDataService){
+                this._dataService = dataService;
+    }
+      title : string  = "Old Title"
+
+      searchCustomers(event:any) {
+        if(event.target.value.length > 0){
+            console.log(event.target.value);
+            this._dataService.searchCustomers(event.target.value as string)
+            .subscribe((custs : ICustomer[]) => {
+                this.lstCustomers = custs;
+            })
+        }
+        else {
+            //call getAllCustomers
+            this._dataService.getAllCustomers()
+            .subscribe((custs:ICustomer[]) => {
+                 this.lstCustomers = custs;
+            })
+        }
+        
+      }
+     ngOnInit(): void {
+       this.title = "Customers Component"
+       //Get the list of customers
+       this._dataService.getAllCustomers()
+       .subscribe((custs:ICustomer[]) => {
+            this.lstCustomers = custs;
+       })
+       //connect to signalR Hub
+       var connection = new signalR.HubConnectionBuilder()
+       .configureLogging(signalR.LogLevel.Debug)
+       .withUrl("https://localhost:7134/customerHub",{
+        skipNegotiation:true, transport: signalR.HttpTransportType.WebSockets
+       }).build();
+       
+       connection.start().then(function(){
+        console.log("SignalR connected")
+        //Subscribe
+        connection.invoke("SubscribeToNewCustomers","sriniiyer","19-Dec-2022")
+        .catch(function(err){
+            return console.log(err.toString());
+        })
+       })
+       //handle the notification
+      connection.on("NewCustomerNotification", (message)=> {
+        this.notificationData += "New Customer Norification " + message + "<br\>";
+        //document.getElementById("myContent").innerHTML = this.notificationData;
+      })
+    }
+}
+export default CustomersComponent;
+
+
+
+*********\customers.component.html
+<h1> {{title}}</h1>
+<h2> {{lstCustomers.length}}</h2>
+
+<!--Place holder for New Customer Notifications with SignalR-->
+
+
+    <h3>Search By Name: </h3> <input type="text" (input)="searchCustomers($event)"/>
+
+<table width="100%">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Customer Since</th>
+        <th>Total Purchases</th>
+    </tr>
+    <tr *ngFor="let cust of lstCustomers">
+        <td>{{cust.id}}</td>
+        <td  align="left">&nbsp;&nbsp;{{cust.name}}</td>
+        <td align="center">{{cust.location}}</td>
+        <td align="center">{{cust.customerSince | date:"dd-mm-yyyy"}}</td>
+        <td align="right">{{cust.totalPurchases | currency:"INR"}}</td>
+    </tr>
+
+</table>
+
+
+
+
+
+
+
+Rabbit MQ Plugins configuration
+
+
+
+
+C:\Program Files\RabbitMQ Server\rabbitmq_server-3.11.4\sbin>rabbitmq-plugins enable rabbitmq_management
+
+http://localhost:15672
+
+
+***Publisher\Program.cs
+
+using System;
+using System.Text;
+using RabbitMQ.Client;
+
+public class PublisherApp
+{
+
+    public static void Main()
+    {
+
+
+        var connectionFactory = new ConnectionFactory() { HostName = "localhost" };
+        using (var connection = connectionFactory.CreateConnection())
+        using (var channel = connection.CreateModel())
+        {
+            channel.QueueDeclare(queue: "newcustomers",
+                durable: false,
+                exclusive: false,
+                autoDelete: false,
+                arguments: null
+
+                );
+            //always use Date and Time in UTF for JSON
+            for (int i = 1; i <= 100; i++)
+            {
+                string strNow = DateTime.Now.ToUniversalTime().ToString();
+                string newCustomer = $"'id':{300 + i},'name':'Customer {i.ToString()}','location':'Chennai','customerSince':{strNow},'totalPurchases':{321 * (i + 14.2)}";
+                string newCustomerJson = "{" + newCustomer + "}";
+                var msgBody = Encoding.UTF8.GetBytes(newCustomerJson);
+
+                //publish the message 1 by 1
+                Thread.Sleep(1000);
+                channel.BasicPublish(exchange: "",
+                    routingKey: "newcustomers",
+                    basicProperties: null,
+                    body: msgBody
+                    );
+
+                Console.WriteLine($"Sent message with id{300+i.ToString()}");
+
+            }
+        }
+    }
+
+}
+
+
+
+*****ReceiverApp\Program.cs
+
+using System;
+using System.Text;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
+
+public class PublisherApp
+{
+
+    public static void Main()
+    {
+
+
+        var connectionFactory = new ConnectionFactory() { HostName = "localhost" };
+        using (var connection = connectionFactory.CreateConnection())
+        using (var channel = connection.CreateModel())
+        {
+         
+            var consumer = new EventingBasicConsumer(channel);
+            //assign call back anon method
+            consumer.Received += (model, msg) =>
+            {
+                var msgBody = msg.Body.ToArray();
+                var message = Encoding.UTF8.GetString(msgBody);
+                Console.WriteLine($"Message Receive {message}");
+
+            };
+            //start consuming the messages
+            channel.BasicConsume(queue: "newcustomers", autoAck: true, consumer: consumer);
+            //keep waiting
+            Console.ReadLine();
+
+
+        }
+    }
+}
+
+
+
+*******************************Day 06*********************************
+05-Dec-2022
+
+Agenda
+
+1. Move to Azure
+2. Set up A Windows 11 Azure VM 
+3. Install Docker and other tools
+4. Move Web Apps to Azure - Reengineer
+5. Serverless
+
+
+Login to Azure
+
+Azure Services 
+Cloud Service - Microsoft
+Infra as a Service - VM, VNEts, DNS, Compute 
+Platform as a Service - OS-Runtime - Host your App (Servers are shared - Option for Serverless - pure compute)
+Software as a Service - Purchase a Software space 
+
+
+
+Object Hierarchy on Azure
+
+Organization - deloitte.com
+
+Tenants - in.deloitte.com, fr.deloitte.com, 
+
+Subscriptions
+Sponsorship, Pay as you Go-Dev/Test, Pay-as-you go, Premium, Enterprise
+
+Resource Groups - Collection of Resources
+Infra, Platform, Softwares
+Cannot have a resource outside a resource group
+Database of Resources - Location (data center)
+
+Full Stack - FE App, REST API, Database, Blobstorage, Authentication
+rgFinCompliance group - 
+
+rgDatabases - 
+
+rgWebApps - 
+
+Resources - 
+VMs, App SErvices, Function Apps, Databases
+
+Resource - Location - May be different from the Resource group it belongs to
+
+Location based on Availability
+Based on QoS (SLA)
+Cost
+High Availability
+Business Continuity Planning
+Proximity - 
+
+************Instructions for Installing Docker Desktop on Win 11 Azure VM**************
+
+1. Download Docker Dekstop for Windows
+
+
+https://www.docker.com/products/docker-desktop/
+
+DO NOT INSTALL
+
+2. Docker runs on Windows Subsystem for linux
+
+Download the WSL 2 update x64
+
+
+https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
+
+
+3. Install Docker Desktop
+
+4. Restart the VM - 
+
+5. Reconnect
+
+6. Docker Desktop would start - CLICK CLOSE (NOT ACCEPT)
+
+Wait for 30 secs
+
+7. Install WSL 2 update
+
+8. Restart Docker Desktop
+
+
+***************AZ-204 Samples*******************
+
+https://github.com/MicrosoftLearning/AZ-204-DevelopingSolutionsforMicrosoftAzure
+
+
+******Tooling******
+
+1. Download and Install DotNET 6.0 SDK
+
+https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-6.0.403-windows-x64-installer
+
+2. Download and Install - Azure CLI 
+
+https://aka.ms/installazurecliwindows
+
+3. Download and Install - VS Code - Windows-System Installer- 64 bit
+
+https://code.visualstudio.com/docs/?dv=win64
+
+
+***Start working with the Labs
+
+In VS Code Open the folder Labs\01\Starter
+
+
+Deployment Command with Azurecli
+
+>az login
+
+>az webapp deployment source config-zip --resource-group rgManagedPlatform --src api.zip --name imgapisrini999
+
+
+
+az webapp deployment source config-zip --resource-group rgManagedPlatform --src web.zip --name imgwebsrini999
+
+
+How to implement the same webapp which is having private container access rather than anonymous access?
+
+az webapp deployment source config-zip --resource-group rgManagedPlatform --src web.zip --name imgwebsrini999
+
+az webapp deployment source config-zip --resource-group rgVMs --src api.zip --name imgapisrini999
+
+
+
+***************Azure functions
+
+1. Download and install Azure Functions Core Tools
+
+https://go.microsoft.com/fwlink/?linkid=2174087
+
+
+
+2. On VS Code Terminal Open C:\Labs\02\Starter\func
+
+3. Create a new boilerplate func project using Azure Functions Core Tools
+
+func init --worker-runtime "dotnet" --force
+
+4. Create a function that is triggered by HTTP "Echo"
+
+func new --template "HTTP Trigger" --name "Echo"
+
+5. Azure CLI contains build and a dev web server
+
+6. Build and run the function project locally
+
+func start --build
+
+7. Publish the function to Azure function all
+
+>func azure functionapp publish funclogicsrini999
+
+8. Create a new function triggered by a Timer - 
+
+
+func new --template "Timer Trigger" --name "RunEvery5Secs"
+
+.\RunEvery5Secs.cs
+
+using System;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.Logging;
+
+namespace func
+{
+    public class RunEvery5Secs
+    {
+        [FunctionName("RunEvery5Secs")]
+        public void Run([TimerTrigger("0/5 * * * * *")]TimerInfo myTimer, ILogger log)
+        {
+            log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
+        }
+    }
+}
+
+9. Func start --build
+
+
+10. Publish the function to Azure function all
+
+>func azure functionapp publish funclogicsrini999
+
+
+11. Create a Http Trigger function "GetBlobContent"
+
+func new --template "HTTP Trigger" --name "GetBlobContent"
+
+12. Install extension
+
+func extensions install --package Microsoft.Azure.WebJobs.Extensions.Storage --version 5.0.1
+
+
+
+dotnet new console -o "DataMigrationTool" 
+
+
+.DataMigrationTool\DataMigrationTool.csproj
+
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdventureWorks.Context\AdventureWorks.Context.csproj" />
+    <ProjectReference Include="..\AdventureWorks.Models\AdventureWorks.Models.csproj" />
+  </ItemGroup>
+    <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.28.0" />
+     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0" />
+  </ItemGroup>
+</Project>
+
+*********************Day 08*********************07-Dec-2022****
+
+
+**Enable Container feature 
+Enable-WindowsOptionalFeature -Online -FeatureName containers –All
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V –All
+
+
+*************A Brief History of Docker & Containerization**************
+
+Phase 1
+
+Applications Softwares - User Mode Apps
+
+
+OS- Kernel - Kernel Mode - 1 OS on a Mother Board
+BIOS - Boot up 
+Motherboard - Compute,NEtworking, Storage, Other Peripherals
+
+
+Phase 2 - Dual Boot 
+
+
+Applications Softwares - User Mode Apps
+
+
+c:\ WinOS    --   d:\ Linux
+BIOS - Boot up 
+Motherboard - Compute,NEtworking, Storage, Other Peripherals
+
+Phase 3 - Concrrent OS on top of Base OS - Virtualization
+
+SQL SErver               WebLogic
+
+
+WinServer - 16GB RAM         Suse Linux - 8 GB RAM
+Virtualization Software - VMWare, Hyper-V, Oracle VM Virtual Box
+Base OS
+VX Technology - Sharing of H/W Resources
+MotherBoard - 512GB RAM 
+
+
+ASP.NET Application
+App Pool
+ASP.NET 
+IIS
+Windows Server VM
+
+
+Phase 4 - Containerization
+
+
+Application + All the dependencies
+App - MS Build - CSC - bin\Release -  dotnet sdk for that OS
+
+APP - Build tool for docker - Dependencies must be built for docker
+
+
+Docker Engine - Managment + Linux Kernel (
+
+
+default) - Mobilinux
+H/W
+
+Windows & Linux - 
+
+
+ASp.NET Core                                    Windows App 
+  Docker Dependencies                           Windows Server
+        Docker Dependencies
+
+------------------------Docker Desktop----------------------
+Linux Kernel                               Windows Kernel
+WSL                                   Windows
+        Windows 11
+*****************************H/W***************************
+
+Docker Engine - Build, STore, Run Manage Docker Apps + Kernel 
+Docker Image - Is the static file that contains the App+All its dependencies
+Docker Images are built using Dockerfile (Build workflow)
+Docker Container - An instance of the Docker Image that runs like a VM - sharing the OS Resources provided by the Linux Engine 
+Docker Hub - default registry for Docker Images (You can have your own repositories)
+
+
+
+# Get to know the docker environment
+
+docker info
+
+# Get the list of images in this docker engine
+docker image ls
+
+# pull image of a hello-word app from the default registry - dockerhub
+
+docker pull hello-world:latest
+
+# run(host) the docker image 
+# Docker Images have a GUID
+# When docker images are hosted they are called containers
+# containers are identified by a GUI or unique name scoped to the Docker engine
+docker image ls
+
+docker run hello-world
+
+docker container ls
+
+# Run a mongo db server
+# MongoDB + OS ()
+#docker run = if not found docker pull + docker run
+docker run -d  --name mymongo mongo:latest
+
+
+# get the list of containers running
+docker container ls
+#Get the id of your mongo container
+
+# inspect the container
+
+docker inspect d797dd923eb2
+
+# Get into that runnig container
+
+docker exec -it d797dd923eb2 powershell
+
+
+
+*******Docker file
+# Dockerfile is a Build Workflow spec
+# you ask docker to provision a temporary container to build the image
+# you always with with what you need from the lowermost dependency
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
+
+#Copy the files onto the base image
+
+COPY scripts\\myscript.ps1 c:\\yourscript.ps1
+
+#Provide the startup command
+CMD ["powershell.exe", "c:\\yourscript.ps1"]
+
+
+********************************
+docker image build --tag sriniiyer/win-ps-app:v10 .
+
+
+
+
+***********Dockerfile
+# escape=`
+FROM mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2019
+SHELL ["powershell"]
+
+ARG ENV_NAME=DEV
+
+EXPOSE 80
+
+COPY template.html c:\template.html
+
+#Read the conents of c:\template.html and modify the {} values
+
+RUN (Get-Content -Raw c:\template.html) `
+    -replace '{hostname}', [Environment]::MachineName `
+    -replace '{environment}',[Environment]::GetEnironmentVariable('ENV_NAME') `
+    | Set-Content -Path c:\inetpub\wwwroot\index.html
+
+
+*******************Day09 - 08-Dec-2022*********************************
+
+1. Linux Containers
+2. Docker images of .net apps
+3. Containerize ASP.NET App, Mongodb & Rabbit MQ
+4. Move the build process to Azure
+5. Azure Container Registry
+6. Hosting
+
+PS C:\Labs\DockerLabs\04-.NetWinConsoleApp\mywinconsoleapp> dotnet new console -o .
+
+.\Dockerfile
+
+# Stage 1 - Build the app with dependencies and get the reference in a variable
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
+
+WORKDIR /App 
+
+# Copy everything into the App folder
+COPY . ./
+USER CONTAINERADMINISTRATOR
+# Restore the layers
+
+RUN dotnet restore 
+
+#Build and publish to out folder under app
+RUN dotnet publish -c Release -o out
+
+# Stage 2 - Use the output of the earlier build and create the image with just the dotnet runtime
+FROM mcr.microsoft.com/dotnet/runtime:6.0
+WORKDIR /App
+COPY --from=build-env /App/out .
+ENTRYPOINT ["dotnet","mywinconsoleapp.dll"]
+
+
+
+
+
+
+\\192.168.1.51\Soft
+
+
+
+
+docker run -d --rm -it -p 15672:15672 -p 5672:5672 rabbitmq:3-management
+
+
+API URL
+
+http://win10dockersrini2022.eastus.cloudapp.azure.com:7071/api/customers
+
+****************Blazor Arch******************
+
+Javascript Engine - VBScript -
+WebAssembly  - Mono - .NET Core - C# Code -> Render the DOM
+Browser Engine - Render the DOM - 
+Web Browser
+
+
+Surveys -
+
+MTM Survey
+
+https://www.metricsthatmatter.com/url/u.aspx?AFCB02FA0191535879
+Microsoft Learn Achievement code:
+
+
+Wait for me!
+
+    
+https://learn.microsoft.com/en-us/users/me/achievements?redeem=L74G9D&WT.mc_id=ilt_partner_webpage_wwl&ocid=5350459
+
+********Full courseware link*************
+
+https://drive.google.com/file/d/1DM3vjxgE1y5KNCP1f25l73JKIbhfidv-/view?usp=share_link
+
+
+vasanraje@gmail.com
+Whatsapp - 9841334832
+
+
+
+
+
+
+
+
+
